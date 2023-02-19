@@ -5,9 +5,91 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="pages/index.css">
-	<title>Document</title>
+	<title>Mesto</title>
 </head>
 <body>
-	
+	<div class="page">
+		<header class="header page-container">
+			<div class="logo">
+				<img src="images/logo.svg" alt="Логотип Mesto Russia" class="logo__img">
+			</div>
+		</header>
+		<main class="main page-container">
+			<section class="profile">
+				<img src="images/avatar.png" alt="Фотография пользователя" class="profile__avatar">
+				<div class="profile__container">
+					<div class="profile__info">
+						<h1 class="profile__name">Жак-Ив Кусто</h1>
+						<p class="profile__prof">Исследователь океана</p>
+					</div>
+					<button class="profile__btn-edit"></button>
+				</div>
+				<button class="profile__btn-add"></button>
+			</section>
+			<section class="elements">
+				<div class="elements__card">
+					<img src="images/karachaevsk.jpg" alt="Замок в Карачаевске" class="elements__img">
+					<div class="elements__descr">
+						<h2 class="elements__title">Карачаевск</h2>
+						<img src="images/heart.svg" alt="Поставить сердечко картинке" class="elements__like">
+					</div>
+				</div>
+				<div class="elements__card">
+					<img src="images/vietnam.jpg" alt="Замок в Карачаевске" class="elements__img">
+					<div class="elements__descr">
+						<h2 class="elements__title">Бухта, Вьетнам</h2>
+						<img src="images/heart.svg" alt="Поставить сердечко картинке" class="elements__like">
+					</div>
+				</div>
+				<div class="elements__card">
+					<img src="images/austria.jpg" alt="Замок в Карачаевске" class="elements__img">
+					<div class="elements__descr">
+						<h2 class="elements__title">Харткайзер, Австрия</h2>
+						<img src="images/heart.svg" alt="Поставить сердечко картинке" class="elements__like">
+					</div>
+				</div>
+				<div class="elements__card">
+					<img src="images/romania.jpg" alt="Замок в Карачаевске" class="elements__img">
+					<div class="elements__descr">
+						<h2 class="elements__title">Ущелье, Румыния</h2>
+						<img src="images/heart.svg" alt="Поставить сердечко картинке" class="elements__like">
+					</div>
+				</div>
+				<div class="elements__card">
+					<img src="images/uzbekistan.jpg" alt="Замок в Карачаевске" class="elements__img">
+					<div class="elements__descr">
+						<h2 class="elements__title">Ташкент, Узбекистан</h2>
+						<img src="images/heart.svg" alt="Поставить сердечко картинке" class="elements__like">
+					</div>
+				</div>
+				<div class="elements__card">
+					<img src="images/malaysia.jpg" alt="Пщеры Бату, Малазия" class="elements__img">
+					<div class="elements__descr">
+						<h2 class="elements__title">Пщеры Бату, Малазия</h2>
+						<img src="images/heart.svg" alt="Поставить сердечко картинке" class="elements__like">
+					</div>
+				</div>
+			</section>
+			<section class="popup">
+				<div class="popup__container">
+					<div class="popup__content">
+						<h2 class="popup__title">Редактировать профиль</h2>
+						<button class="popup__btn-close"></button>
+						<form action="#" class="popup__form">
+							<div class="popup__input-box">
+								<input type="text" value="Жак-Ив Кусто" class="popup__name">
+								<input type="text" value="Исследователь океана" class="popup__prof">
+							</div>
+							<button class="popup__btn-save">Сохранить</button>
+						</form>
+					</div>
+				</div>
+
+			</section>
+		</main>
+		<footer class="footer page-container">
+			<p class="footer__copyright">© 2023 Mesto Russia</p>
+		</footer>
+	</div>
 </body>
 </html>

@@ -7,6 +7,16 @@
 	color: #FFFFFF;
 	padding: 45px 0 60px;
 	font-family: 'Inter', sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-text-size-adjust: 100%;
+	-ms-text-size-adjust: 100%;
+	-moz-text-size-adjust: 100%;
+}
+@media screen and (max-width: 1023px) {
+	.page {
+		padding: 45px 19px 60px;
+	}
 }
 .page-container {
 	max-width: 880px;
@@ -88,8 +98,18 @@
 	grid-template-columns: repeat(3, 282px);
 	grid-template-rows: repeat(2, 1fr);
 	gap: 20px 17px;
-
-
+	justify-content: center;
+}
+@media screen and (max-width: 1023px) {
+	.elements {
+		grid-template-columns: repeat(2, 282px);
+		grid-template-rows: repeat(3, 1fr);
+	}
+}
+@media screen and (max-width: 619px) {
+	.elements {
+		grid-template-columns: 282px;
+	}
 }
 .elements__card {
 	background: #FFFFFF;
@@ -111,10 +131,12 @@
 .elements__descr {
 	display: flex;
 	justify-content: space-between;
+	align-items: baseline;
 	padding: 25px 20px;
 
 }
 .elements__title {
+	max-width: 195px;
 	font-weight: 900;
 	font-size: 24px;
 	line-height: 29px;
@@ -124,16 +146,19 @@
 	overflow: hidden;
 }
 .elements__like {
+	background: url(../images/heart.svg);
+	width: 22px;
+	height: 19px;
 }
-
+ .elements__like:active  {
+	background: url(../images/black-heart.svg);
+}
 .elements__like:hover {
 	opacity: 0.5;
 	transition-duration: 0.5s;
 	cursor: pointer;
 }
-.elements__like:active {
-	background: #000000;
-}
+
 .popup {
 	display: none;
 	position: fixed;

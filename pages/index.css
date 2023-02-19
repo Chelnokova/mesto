@@ -35,24 +35,49 @@
 	padding: 40px 0 66px;
 	display: grid;
 	row-gap: 50px;
-	
+}
+@media screen and (max-width: 767px) {
+	.main {
+		row-gap: 36px;
+	}
 }
 .profile {
 	display: flex;
 	align-items: center;
 	column-gap: 30px;
 }
+@media screen and (max-width: 767px) {
+	.profile {
+		flex-direction: column;
+		column-gap: 0;
+	}
+}
 .profile__avatar {
+}
+@media screen and (max-width: 767px) {
+	.profile__avatar {
+		margin: 0 0 26px;
+	}
 }
 .profile__container {
 	display: flex;
 	column-gap: 18px;
 	align-items: baseline;
 }
+@media screen and (max-width: 767px) {
+	.profile__container {
+		margin: 0 0 36px;
+	}
+}
 .profile__info {
 	display: flex;
 	flex-direction: column;
 	row-gap: 16px;
+}
+@media screen and (max-width: 767px) {
+	.profile__info {
+		row-gap: 14px;
+	}
 }
 .profile__name {
 	font-weight: 500;
@@ -60,19 +85,41 @@
 	line-height: 1.14;
 	margin: 0;
 }
+@media screen and (max-width: 767px) {
+	.profile__name {
+		font-size: 27px;
+		line-height: 1.22;
+	}
+}
+
 .profile__prof {
 	font-weight: 400;
 	font-size: 18px;
 	line-height: 22px;
 	margin: 0;
 }
+
+@media screen and (max-width: 767px) {
+	.profile__prof {
+		font-size: 14px;
+		line-height: 1.21;
+	}
+}
 .profile__btn-edit {
 	border: none; 
 	outline: none;
-	background: transparent;
+	padding: 0;
+	/* background: transparent; */
 	background: url(../images/edit-button.svg)  no-repeat;
 	width: 24px;
 	height: 24px;
+}
+@media screen and (max-width: 767px) {
+	.profile__btn-edit {
+		background: url(../images/edit-button-little.svg)  no-repeat;
+		width: 18px;
+		height: 18px;
+	}
 }
 .profile__btn-edit:hover {
 	opacity: 0.6;
@@ -86,12 +133,21 @@
 	background: url(../images/add-button.svg)  no-repeat;
 	width: 150px;
 	height: 50px;
+	padding: 0;
 	margin: 0 0 0 auto;
 }
 .profile__btn-add:hover {
 	opacity: 0.6;
 	transition-duration: 0.5s;
 	cursor: pointer;
+}
+
+@media screen and (max-width: 767px) {
+	.profile__btn-add {
+		background: url(../images/add-button-big.svg)  no-repeat;
+		width: 282px;
+		margin: 0 auto;
+	}
 }
 .elements {
 	display: grid;

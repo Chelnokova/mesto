@@ -1,7 +1,6 @@
 @import url(../vendor/normalize.css);
 @import url(../vendor/fonts/fonts.css);
 
-
 .page {
 	background: #000000;
 	color: #FFFFFF;
@@ -252,6 +251,9 @@
 	height: 100%;
 	background: rgba(0, 0, 0, 0.5)
 }
+.popup_opened {
+	display: block;
+}
 .popup__container {
 	min-height: 100%;
 	display: flex;
@@ -290,6 +292,7 @@
 		margin: 0 0 80px 0;
 	}
 }
+
 .popup__btn-close {
 	border: none; 
 	outline: none;
@@ -301,6 +304,7 @@
 	top: -40px;
 	right: -40px;
 }
+
 @media screen and (max-width: 767px) {
 	.popup__btn-close {
 		padding: 0;
@@ -341,7 +345,7 @@ line-height: 17px;
 	padding: 0 0 9.5px 0;
 	border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
-.popup__prof {
+.popup__job {
 	outline: 0;
 	border: 0;
 	margin: 0;
@@ -390,3 +394,4 @@ line-height: 17px;
 		font-size: 14px;
 	}
 }
+

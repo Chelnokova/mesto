@@ -1,10 +1,7 @@
 .elements__like {
-	background: url(../images/heart.svg);
+	background: url(../../../images/heart.svg);
 	width: 22px;
 	height: 19px;
-}
- .elements__like:active  {
-	background: url(../images/black-heart.svg);
 }
 .elements__like:hover {
 	opacity: 0.5;

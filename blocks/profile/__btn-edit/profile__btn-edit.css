@@ -2,13 +2,13 @@
 	border: none; 
 	outline: none;
 	padding: 0;
-	background: url(../images/edit-button.svg)  no-repeat;
+	background: url(../../../images/edit-button.svg)  no-repeat;
 	width: 24px;
 	height: 24px;
 }
 @media screen and (max-width: 767px) {
 	.profile__btn-edit {
-		background: url(../images/edit-button-little.svg)  no-repeat;
+		background: url(../../../images/edit-button-little.svg)  no-repeat;
 		width: 18px;
 		height: 18px;
 		position: absolute;

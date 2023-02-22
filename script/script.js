@@ -1,6 +1,6 @@
-let editBtn = document.querySelector(".profile__btn-edit");
-let popup = document.querySelector(".popup");
-let closeBtn = document.querySelector(".popup__btn-close");
+let editBtn = document.querySelector('.profile__btn-edit');
+let popup = document.querySelector('.popup');
+let closeBtn = document.querySelector('.popup__btn-close');
 
 function openPopup() {
 	popup.classList.add('popup_opened');
@@ -12,9 +12,9 @@ function closePopup() {
 }
 closeBtn.addEventListener('click', closePopup);
 
-let formElement = document.querySelector(".popup__form");
-let nameInput = document.querySelector(".popup__name");
-let jobInput = document.querySelector(".popup__job");
+let formElement = document.querySelector('.popup__form');
+let nameInput = document.querySelector('.popup__name');
+let jobInput = document.querySelector('.popup__job');
 
 function handleFormSubmit (evt) {
     evt.preventDefault(); 

@@ -1,6 +1,7 @@
 .popup__btn-save {
 	padding: 14px 0;
 	border: 0;
+	width: 100%;
 	color: #FFFFFF;
 	font-weight: 400;
 	font-size: 18px;

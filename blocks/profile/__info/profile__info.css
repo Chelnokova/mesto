@@ -6,6 +6,6 @@
 @media screen and (max-width: 767px) {
 	.profile__info {
 		row-gap: 8px;
-		align-items: center
+		align-items: center;
 	}
 }

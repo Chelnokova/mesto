@@ -1,4 +1,7 @@
-<svg width="282" height="50" viewBox="0 0 282 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-<rect x="1" y="1" width="280" height="48" rx="1" stroke="white" stroke-width="2"/>
-<path d="M150 24.1111H142.889V17H141.111V24.1111H134V25.8889H141.111V33H142.889V25.8889H150V24.1111Z" fill="white"/>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="px" height="px" viewBox="0 0 141 25" version="1.1">
+<g id="surface1">
+<path style="fill:none;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke:rgb(100%,100%,100%);stroke-opacity:1;stroke-miterlimit:4;" d="M 2 1 L 280 1 C 280.554688 1 281 1.445312 281 2 L 281 48 C 281 48.554688 280.554688 49 280 49 L 2 49 C 1.445312 49 1 48.554688 1 48 L 1 2 C 1 1.445312 1.445312 1 2 1 Z M 2 1 " transform="matrix(0.5,0,0,0.5,0,0)"/>
+<path style=" stroke:none;fill-rule:nonzero;fill:rgb(100%,100%,100%);fill-opacity:1;" d="M 75 12.054688 L 71.445312 12.054688 L 71.445312 8.5 L 70.554688 8.5 L 70.554688 12.054688 L 67 12.054688 L 67 12.945312 L 70.554688 12.945312 L 70.554688 16.5 L 71.445312 16.5 L 71.445312 12.945312 L 75 12.945312 Z M 75 12.054688 "/>
+</g>
 </svg>

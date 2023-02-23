@@ -19,70 +19,69 @@
 				<img src="images/avatar.png" alt="Фотография пользователя" class="profile__avatar">
 				<div class="profile__container">
 					<div class="profile__info">
-						<h1 class="profile__name">Жак-Ив Кусто</h1>
+						<h1 class="profile__name">Жак-Ив Кусто
+						</h1>
 						<p class="profile__job">Исследователь океана</p>
 					</div>
-					<button class="profile__btn-edit"></button>
+					<button class="profile__btn-edit" type="button"></button>
 				</div>
-				<button class="profile__btn-add"></button>
+				<button class="profile__btn-add"  type="button"></button>
 			</section>
-			<section class="elements">
-				<div class="elements__card">
+			<ul class="elements">
+				<li class="elements__card">
 					<img src="images/karachaevsk.jpg" alt="Замок в Карачаевске" class="elements__img">
-					<div class="elements__descr">
+					<article class="elements__descr">
 						<h2 class="elements__title">Карачаевск</h2>
-						<div class="elements__like"></div>
-					</div>
-				</div>
-				<div class="elements__card">
+						<button class="elements__like" type="button"></button>
+					</article>
+				</li>
+				<li class="elements__card">
 					<img src="images/vietnam.jpg" alt="Вид на бухту во Вьетнаме с кораблями" class="elements__img">
-					<div class="elements__descr">
+					<article class="elements__descr">
 						<h2 class="elements__title">Бухта, Вьетнам</h2>
-						<div class="elements__like"></div>
-					</div>
-				</div>
-				<div class="elements__card">
+						<button class="elements__like" type="button"></button>
+					</article>
+				</li>
+				<li class="elements__card">
 					<img src="images/austria.jpg" alt="Вид на горнолыжный курорт Харткайзер в Австрии" class="elements__img">
-					<div class="elements__descr">
+					<article class="elements__descr">
 						<h2 class="elements__title">Харткайзер, Австрия</h2>
-						<div class="elements__like"></div>
-					</div>
-				</div>
-				<div class="elements__card">
+						<button class="elements__like" type="button"></button>
+					</article>
+				</li>
+				<li class="elements__card">
 					<img src="images/romania.jpg" alt="Вид на ущелье и статую в Румынии" class="elements__img">
-					<div class="elements__descr">
+					<article class="elements__descr">
 						<h2 class="elements__title">Ущелье, Румыния</h2>
-						<div class="elements__like"></div>
-					</div>
-				</div>
-				<div class="elements__card">
+						<button class="elements__like" type="button"></button>
+					</article>
+				</li>
+				<li class="elements__card">
 					<img src="images/uzbekistan.jpg" alt="Фотография мечети в Ташкенте" class="elements__img">
-					<div class="elements__descr">
+					<article class="elements__descr">
 						<h2 class="elements__title">Ташкент, Узбекистан</h2>
-						<div class="elements__like"></div>
-					</div>
-				</div>
-				<div class="elements__card">
+						<button class="elements__like" type="button"></button>
+					</article>
+				</li>
+				<li class="elements__card">
 					<img src="images/malaysia.jpg" alt="Фотография конструкций в пщерах Бату в Малазия" class="elements__img">
-					<div class="elements__descr">
+					<article class="elements__descr">
 						<h2 class="elements__title">Пщеры Бату, Малазия</h2>
-						<div class="elements__like"></div>
-					</div>
-				</div>
-			</section>
+						<button class="elements__like" type="button"></button>
+					</article>
+				</li>
+			</ul>
 			<section class="popup">
 				<div class="popup__container">
-					<div class="popup__content">
-						<h2 class="popup__title">Редактировать профиль</h2>
-						<button class="popup__btn-close"></button>
-						<form action="#" class="popup__form">
-							<div class="popup__input-box">
-								<input type="text" value="Жак-Ив Кусто" class="popup__name">
-								<input type="text" value="Исследователь океана" class="popup__job">
-							</div>
-							<button class="popup__btn-save" type='submit'>Сохранить</button>
-						</form>
-					</div>
+					<h2 class="popup__title">Редактировать профиль</h2>
+					<button class="popup__btn-close"  type="button"></button>
+					<form action="#" name="edit-profile" class="popup__form">
+						<div class="popup__input-box">
+							<input type="text" placeholder="Ваше имя" class="popup__input popup__input_type_name">
+							<input type="text" placeholder="Ваш вид деятельности" class="popup__input popup__input_type_job">
+						</div>
+						<button class="popup__btn-save" type='submit'>Сохранить</button>
+					</form>
 				</div>
 
 			</section>
@@ -91,6 +90,6 @@
 			<p class="footer__copyright">&copy; 2023 Mesto Russia</p>
 		</footer>
 	</div>
-	<script src="./script/script.js"></script>
+	<script src="./scripts/script.js" defer></script>
 </body>
 </html>

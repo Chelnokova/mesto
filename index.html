@@ -38,7 +38,7 @@
 					</li>
 				</template>
 			</ul>
-			<section class="popup">
+			<section class="popup popup_type_edit">
 				<div class="popup__container">
 					<h2 class="popup__title">Редактировать профиль</h2>
 					<button class="popup__btn-close"  type="button"></button>
@@ -48,6 +48,20 @@
 							<input type="text" placeholder="Ваш вид деятельности" class="popup__input popup__input_type_job">
 						</div>
 						<button class="popup__btn-save" type='submit'>Сохранить</button>
+					</form>
+				</div>
+
+			</section>
+			<section class="popup popup_type_add">
+				<div class="popup__container">
+					<h2 class="popup__title">Новое место</h2>
+					<button class="popup__btn-close"  type="button"></button>
+					<form action="#" name="edit-profile" class="popup__form">
+						<div class="popup__input-box">
+							<input type="text" placeholder="Название" class="popup__input popup__input_type_name">
+							<input type="text" placeholder="Ссылка на картинку" class="popup__input popup__input_type_job">
+						</div>
+						<button class="popup__btn-save" type='submit'>Создать</button>
 					</form>
 				</div>
 

@@ -1,6 +1,9 @@
 let editBtn = document.querySelector('.profile__btn-edit');
-let popup = document.querySelector('.popup');
-let closeBtn = document.querySelector('.popup__btn-close');
+const addBtn = document.querySelector('.profile__btn-add');
+let popup = document.querySelectorAll('.popup');
+const popupEdit = document.querySelector('.popup_type_edit');
+const popupAdd = document.querySelector('.popup_type_add');
+let closeBtn = document.querySelectorAll('.popup__btn-close');
 let formElement = document.querySelector('.popup__form');
 let nameInput = document.querySelector('.popup__input_type_name');
 let jobInput = document.querySelector('.popup__input_type_job');
@@ -9,7 +12,6 @@ let jobProfile = document.querySelector('.profile__job');
 
 const cardContainer = document.querySelector('.elements');
 const cardTemplate = document.querySelector('#template__card').content;
-
 
 
 const initialCards = [
@@ -39,39 +41,44 @@ const initialCards = [
 	}
   ];
 
-function openPopup() {
-	popup.classList.add('popup_opened');
+function openPopup(elem) {
+	if (elem === 'edit') {
+		popupEdit.classList.add('popup_opened');
+	} if (elem === 'add') {
+		popupAdd.classList.add('popup_opened');
+	}
+}
+
+editBtn.addEventListener('click', function() {
+	openPopup('edit');
 	nameInput.value = nameProfile.textContent;
 	jobInput.value = jobProfile.textContent;
-}
-console.log()
-editBtn.addEventListener('click', openPopup);
+});
 
-function closePopup() {
-	popup.classList.remove('popup_opened');
-}
-closeBtn.addEventListener('click', closePopup);
+addBtn.addEventListener('click', function() {
+	openPopup('add');
+});
 
-function handleFormSubmit (evt) {
-    evt.preventDefault(); 
+initialCards.forEach(fillCard);
 
-	nameProfile.textContent = nameInput.value;
-	jobProfile.textContent = jobInput.value;
-
-	closePopup();
-}
-
-formElement.addEventListener('submit', handleFormSubmit);
-
-initialCards.forEach(function fillCard(element) {
+function fillCard(element) {
 	
 	const cardElement = cardTemplate.cloneNode(true);
-
+	
 	cardElement.querySelector('.elements__img').src = element.link;
-
+	
 	cardElement.querySelector('.elements__img').alt = `На фото ${element.name}`;
-
+	
 	cardElement.querySelector('.elements__title').textContent = element.name;
-
+	
 	cardContainer.append(cardElement);
-});
+}
+
+closeBtn.forEach(closePopup);
+
+function closePopup(el) {
+	const openPopup = el.closest('.popup');
+	el.addEventListener('click', () => {
+		openPopup.classList.remove('popup_opened');
+	});
+}

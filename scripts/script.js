@@ -78,7 +78,10 @@ function fillCard(element) {
 
 	cardElement.querySelector('.elements__like').addEventListener('click', function(evt) {
 		evt.target.classList.toggle('elements__like_checked');
-	})
+	});
+
+	const deleteBtn = cardElement.querySelector('.elements__basket');
+	deleteBtn.addEventListener('click', clickDeleteBtn);
 	
 	cardContainer.prepend(cardElement);
 }
@@ -119,3 +122,10 @@ function createCard(evt) {
 	linkInput.value = '';
 	fillCard(initialCards[0]);
 }
+
+function clickDeleteBtn(evt) {
+	const button = evt.target;
+	const card = button.closest('.elements__card');
+	card.remove();
+}
+

@@ -1,3 +1,6 @@
 .elements__like_checked {
-	background: url(../../../images/black-heart.svg);
+	background: url(../../../../images/black-heart.svg) 100% center no-repeat;
+}
+.elements__like_checked:hover {
+	opacity: 1;
 }

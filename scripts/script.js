@@ -75,6 +75,10 @@ function fillCard(element) {
 	cardElement.querySelector('.elements__img').alt = `На фото ${element.name}`;
 	
 	cardElement.querySelector('.elements__title').textContent = element.name;
+
+	cardElement.querySelector('.elements__like').addEventListener('click', function(evt) {
+		evt.target.classList.toggle('elements__like_checked');
+	})
 	
 	cardContainer.prepend(cardElement);
 }

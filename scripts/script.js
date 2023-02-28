@@ -7,6 +7,7 @@ let closeBtn = document.querySelectorAll('.popup__btn-close');
 let formElement = document.querySelector('.popup__form');
 let nameInput = document.querySelector('.popup__input_type_name');
 let jobInput = document.querySelector('.popup__input_type_job');
+const saveBtn = document.querySelector('.popup__btn-save');
 let nameProfile = document.querySelector('.profile__name');
 let jobProfile = document.querySelector('.profile__job');
 
@@ -81,4 +82,15 @@ function closePopup(el) {
 	el.addEventListener('click', () => {
 		openPopup.classList.remove('popup_opened');
 	});
+}
+
+formElement.addEventListener('submit', handleFormSubmit);
+
+function handleFormSubmit (evt) {
+    evt.preventDefault(); 
+
+	nameProfile.textContent = nameInput.value;
+	jobProfile.textContent = jobInput.value;
+
+	closePopup(saveBtn);
 }

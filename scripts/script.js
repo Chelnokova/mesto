@@ -4,10 +4,14 @@ let popup = document.querySelectorAll('.popup');
 const popupEdit = document.querySelector('.popup_type_edit');
 const popupAdd = document.querySelector('.popup_type_add');
 let closeBtn = document.querySelectorAll('.popup__btn-close');
-let formElement = document.querySelector('.popup__form');
+let formElementProfile = document.querySelector('.popup__form_type_profile');
+let formElementCard = document.querySelector('.popup__form_type_card');
 let nameInput = document.querySelector('.popup__input_type_name');
 let jobInput = document.querySelector('.popup__input_type_job');
+let titleInput = document.querySelector('.popup__input_type_title');
+let linkInput = document.querySelector('.popup__input_type_link');
 const saveBtn = document.querySelector('.popup__btn-save');
+const createBtn = document.querySelector('.popup__btn-create');
 let nameProfile = document.querySelector('.profile__name');
 let jobProfile = document.querySelector('.profile__job');
 
@@ -72,7 +76,7 @@ function fillCard(element) {
 	
 	cardElement.querySelector('.elements__title').textContent = element.name;
 	
-	cardContainer.append(cardElement);
+	cardContainer.prepend(cardElement);
 }
 
 closeBtn.forEach(closePopup);
@@ -84,7 +88,7 @@ function closePopup(el) {
 	});
 }
 
-formElement.addEventListener('submit', handleFormSubmit);
+formElementProfile.addEventListener('submit', handleFormSubmit);
 
 function handleFormSubmit (evt) {
     evt.preventDefault(); 
@@ -93,4 +97,21 @@ function handleFormSubmit (evt) {
 	jobProfile.textContent = jobInput.value;
 
 	closePopup(saveBtn);
+}
+
+formElementCard.addEventListener('submit', createCard);
+
+function createCard(evt) {
+	evt.preventDefault(); 
+
+	const newCard = {
+		name: titleInput.value,
+		link: linkInput.value
+	};
+	initialCards.splice(0, 0, newCard);
+	closePopup(createBtn);
+
+	titleInput.value = '';
+	linkInput.value = '';
+	fillCard(initialCards[0]);
 }

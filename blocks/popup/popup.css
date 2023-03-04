@@ -16,3 +16,7 @@
 .popup_type_add {
 	display: none;
 }
+
+.popup_type_view {
+	display: none; 
+}

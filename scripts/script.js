@@ -8,6 +8,7 @@ const jobProfile = document.querySelector('.profile__job');
 const popup = document.querySelectorAll('.popup');
 const popupEdit = document.querySelector('.popup_type_edit');
 const popupAdd = document.querySelector('.popup_type_add');
+const popupView = document.querySelector('.popup_type_view');
 
 // Переменные кнопок блока popup
 const closeBtn = document.querySelectorAll('.popup__btn-close');
@@ -24,6 +25,9 @@ const linkInput = document.querySelector('.popup__input_type_link');
 
 // Переменные блока elements
 const cardContainer = document.querySelector('.elements');
+
+const imageCard = document.querySelector('.elements__img');
+const titleCard = document.querySelector('.elements__title');
 const cardTemplate = document.querySelector('#template__card').content;
 
 // данные для карточек
@@ -56,23 +60,19 @@ const initialCards = [
 
 // функция открытия попапа
 function openPopup(elem) {
-	if (elem === 'edit') {
-		popupEdit.classList.add('popup_opened');
-	} if (elem === 'add') {
-		popupAdd.classList.add('popup_opened');
-	}
+	elem.classList.add('popup_opened');
 }
 
 // слушатель клика по editBtn и запуска открытия нужного попапа с автоматическим заполнением полей
 editBtn.addEventListener('click', function() {
-	openPopup('edit');
+	openPopup(popupEdit);
 	nameInput.value = nameProfile.textContent;
 	jobInput.value = jobProfile.textContent;
 });
 
 // слушатель клика по addBtn и запуска открытия нужного попапа
 addBtn.addEventListener('click', function() {
-	openPopup('add');
+	openPopup(popupAdd);
 });
 
 // перебор массива initialCards и запуска функции fillCard
@@ -99,10 +99,15 @@ function fillCard(element) {
 	cardContainer.prepend(cardElement);
 }
 
-// перебор кнопок закрытия попапа и запуск соответствующей функции 
+// функция закрытия попапа при клике на кнопку внутри формы "Сохранить" или "Создать"
+function closePopupFormBtn(el) {
+	el.classList.remove('popup_opened');
+}
+
+// // перебор кнопок закрытия попапа и запуск соответствующей функции 
 closeBtn.forEach(closePopup);
 
-// функция закрытия попапа при клике на кнопку закрыть
+// // функция закрытия попапа при клике на крестик
 function closePopup(el) {
 	const openPopup = el.closest('.popup');
 	el.addEventListener('click', () => {
@@ -120,7 +125,7 @@ function handleFormSubmit (evt) {
 	nameProfile.textContent = nameInput.value;
 	jobProfile.textContent = jobInput.value;
 
-	closePopup(saveBtn);
+	closePopupFormBtn(popupEdit);
 }
 
 // слушатель события submit на formElementCard
@@ -135,11 +140,11 @@ function createCard(evt) {
 		link: linkInput.value
 	};
 	initialCards.splice(0, 0, newCard);
-	closePopup(createBtn);
 
 	titleInput.value = '';
 	linkInput.value = '';
 	fillCard(initialCards[0]);
+	closePopupFormBtn(popupAdd);
 }
 
 // функция удаления карточки
@@ -149,3 +154,30 @@ function clickDeleteBtn(evt) {
 	card.remove();
 }
 
+const imgCard = document.querySelectorAll('.elements__img');
+console.log(imgCard);
+const arrCardImg = Array.from(imgCard);
+console.log(arrCardImg);
+arrCardImg.forEach(function (el) {
+	el.addEventListener('click', function() {
+		openPopup(popupView);
+	});
+});
+// console.log();
+// function openImgPopup(el) {
+// 	el.addEventListener('click', console.log("Привет"));
+// }
+// 	function dataCard(evt) {
+// 		const openCard = evt.target.closest('.elements__card');
+// 		const cardImg = evt.target.getAttribute('src');
+
+// 		let popupImage = document.querySelector('.popup__image').src;
+// 	// popupImage = String(popupImage);
+// 	// let popupHeading = document.querySelector('.popup__heading');
+// 	// popupHeading = String(popupHeading);
+	
+// 	// popupImage.src = openCard.querySelector('.elements__img').src;
+// 		popupHeading.textContent = openCard.querySelector('.elements__title').textContent;
+// 			console.log(cardImg);
+// 			console.log(popupImage);
+// 	};

@@ -8,3 +8,7 @@
 	vertical-align: bottom;
 	/* Это свойство убирает фантомный отступ после картинки */
 }
+
+.elements__img:hover {
+	cursor: pointer;
+}

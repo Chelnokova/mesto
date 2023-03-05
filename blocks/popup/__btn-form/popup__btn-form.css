@@ -1,4 +1,4 @@
-.popup__btn-save {
+.popup__btn-form {
 	padding: 18px 0;
 	border: 0;
 	width: 100%;
@@ -11,12 +11,12 @@
 	box-sizing: border-box;
 }
 @media screen and (max-width: 767px) {
-	.popup__btn-save {
+	.popup__btn-form {
 		font-size: 14px;
 		padding: 16px 0 18px;
 	}
 }
-.popup__btn-save:hover {
+.popup__btn-form:hover {
 	opacity: 0.8;
 	transition-duration: 0.5s;
 	cursor: pointer;

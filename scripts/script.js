@@ -14,8 +14,8 @@ const popupTitle = document.querySelector('.popup__heading');
 
 // Переменные кнопок блока popup
 const closeBtn = document.querySelectorAll('.popup__btn-close');
-const saveBtn = document.querySelector('.popup__btn-save');
-const createBtn = document.querySelector('.popup__btn-create');
+const saveBtn = document.querySelector('.popup__btn-form_type_save');
+const createBtn = document.querySelector('.popup__btn-form_type_create');
 
 // Переменные формы блока popup
 const formElementProfile = document.querySelector('.popup__form_type_profile');

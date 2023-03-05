@@ -62,6 +62,7 @@ const initialCards = [
 // функция открытия попапа
 function openPopup(elem) {
 	elem.classList.add('popup_opened');
+	elem.classList.add('popup_animeted');
 }
 
 // слушатель клика по кнопке editBtn и запуска открытия нужного попапа с автоматическим заполнением полей

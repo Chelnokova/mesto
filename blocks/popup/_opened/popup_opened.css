@@ -1,3 +1,9 @@
 .popup_opened {
-	display: flex;
+	/* transition: all 0.8s ease 0s; */
+	opacity: 1;
+	visibility: visible;
+}
+
+.popup_animeted {
+	transition: all 0.8s ease 0s;
 }

@@ -9,6 +9,8 @@ const popup = document.querySelectorAll('.popup');
 const popupEdit = document.querySelector('.popup_type_edit');
 const popupAdd = document.querySelector('.popup_type_add');
 const popupView = document.querySelector('.popup_type_view');
+const popupImage = document.querySelector('.popup__image');
+const popupTitle = document.querySelector('.popup__heading');
 
 // Переменные кнопок блока popup
 const closeBtn = document.querySelectorAll('.popup__btn-close');
@@ -25,7 +27,6 @@ const linkInput = document.querySelector('.popup__input_type_link');
 
 // Переменные блока elements
 const cardContainer = document.querySelector('.elements');
-
 const imageCard = document.querySelector('.elements__img');
 const titleCard = document.querySelector('.elements__title');
 const cardTemplate = document.querySelector('#template__card').content;
@@ -63,14 +64,14 @@ function openPopup(elem) {
 	elem.classList.add('popup_opened');
 }
 
-// слушатель клика по editBtn и запуска открытия нужного попапа с автоматическим заполнением полей
+// слушатель клика по кнопке editBtn и запуска открытия нужного попапа с автоматическим заполнением полей
 editBtn.addEventListener('click', function() {
 	openPopup(popupEdit);
 	nameInput.value = nameProfile.textContent;
 	jobInput.value = jobProfile.textContent;
 });
 
-// слушатель клика по addBtn и запуска открытия нужного попапа
+// слушатель клика по кнопке addBtn и запуска открытия нужного попапа
 addBtn.addEventListener('click', function() {
 	openPopup(popupAdd);
 });
@@ -154,30 +155,18 @@ function clickDeleteBtn(evt) {
 	card.remove();
 }
 
-const imgCard = document.querySelectorAll('.elements__img');
-console.log(imgCard);
-const arrCardImg = Array.from(imgCard);
-console.log(arrCardImg);
-arrCardImg.forEach(function (el) {
-	el.addEventListener('click', function() {
+// Открытие попапа с нужной картинкой и заголовком при клике на картинку в карточке
+Array.from(document.querySelectorAll('.elements__img')).forEach(function (el) {
+	el.addEventListener('click', function(evt) {
 		openPopup(popupView);
+
+		const openCard = evt.target.closest('.elements__card');
+		const cardImg = evt.target.getAttribute('src');
+		const cardAltImg = evt.target.getAttribute('alt');
+		const cardTitle = openCard.querySelector('.elements__title').textContent;
+
+		popupImage.src = cardImg;
+		popupImage.alt = `На фото ${cardAltImg}`;
+		popupTitle.textContent = cardTitle;
 	});
 });
-// console.log();
-// function openImgPopup(el) {
-// 	el.addEventListener('click', console.log("Привет"));
-// }
-// 	function dataCard(evt) {
-// 		const openCard = evt.target.closest('.elements__card');
-// 		const cardImg = evt.target.getAttribute('src');
-
-// 		let popupImage = document.querySelector('.popup__image').src;
-// 	// popupImage = String(popupImage);
-// 	// let popupHeading = document.querySelector('.popup__heading');
-// 	// popupHeading = String(popupHeading);
-	
-// 	// popupImage.src = openCard.querySelector('.elements__img').src;
-// 		popupHeading.textContent = openCard.querySelector('.elements__title').textContent;
-// 			console.log(cardImg);
-// 			console.log(popupImage);
-// 	};

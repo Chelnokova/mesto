@@ -74,6 +74,7 @@ editBtn.addEventListener('click', function() {
 // слушатель клика по кнопке addBtn и запуска открытия нужного попапа
 addBtn.addEventListener('click', function() {
 	openPopup(popupAdd);
+	console.log(initialCards);
 });
 
 // перебор массива initialCards и запуска функции fillCard
@@ -164,7 +165,9 @@ function createCard(evt) {
 	initialCards.splice(0, 0, newCard);
 
 	formElementCard.reset();
-	fillCard(initialCards[0]);
+
+	cardContainer.prepend(fillCard(initialCards[0]))
+
 	closePopupBtn(popupAdd);
 }
 

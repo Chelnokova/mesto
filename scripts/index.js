@@ -100,13 +100,14 @@ function fillCard(element) {
 	const deleteBtn = cardElement.querySelector('.elements__basket');
 	deleteBtn.addEventListener('click', clickDeleteBtn);
 
-	Array.from(document.querySelectorAll('.elements__img')).forEach(function (el) {
+	Array.from(cardElement.querySelectorAll('.elements__img')).forEach(function (el) {
 		el.addEventListener('click', openImgPopup);
 	});
 
 	return cardElement;
 }
 
+// Функция открытия попапа с нужной картинкой и заголовком
 function openImgPopup(evt) {
 	openPopup(popupView);
 

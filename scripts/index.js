@@ -14,8 +14,6 @@ const popupTitle = document.querySelector('.popup__heading');
 
 // Переменные кнопок блока popup
 const closeBtns = document.querySelectorAll('.popup__btn-close');
-const saveBtn = document.querySelector('.popup__btn-form_type_save');
-const createBtn = document.querySelector('.popup__btn-form_type_create');
 
 // Переменные формы блока popup
 const formElementProfile = document.querySelector('.popup__form_type_profile');
@@ -177,19 +175,3 @@ function clickDeleteBtn(evt) {
 	const card = button.closest('.elements__card');
 	card.remove();
 }
-
-// Открытие попапа с нужной картинкой и заголовком при клике на картинку в карточке
-// Array.from(document.querySelectorAll('.elements__img')).forEach(function (el) {
-// 	el.addEventListener('click', function(evt) {
-// 		openPopup(popupView);
-
-// 		const openCard = evt.target.closest('.elements__card');
-// 		const cardImg = evt.target.getAttribute('src');
-// 		const cardAltImg = evt.target.getAttribute('alt');
-// 		const cardTitle = openCard.querySelector('.elements__title').textContent;
-
-// 		popupImage.src = cardImg;
-// 		popupImage.alt = `На фото ${cardAltImg}`;
-// 		popupTitle.textContent = cardTitle;
-// 	});
-// });

@@ -99,9 +99,7 @@ function fillCard(element) {
 	const deleteBtn = cardElement.querySelector('.elements__basket');
 	deleteBtn.addEventListener('click', clickDeleteBtn);
 
-	Array.from(cardElement.querySelectorAll('.elements__img')).forEach(function (el) {
-		el.addEventListener('click', openImgPopup);
-	});
+	cardElementImg.addEventListener('click', openImgPopup);
 
 	return cardElement;
 }

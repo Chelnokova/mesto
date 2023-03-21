@@ -1,10 +1,4 @@
 .popup__form {
 	display: flex;
 	flex-direction: column;
-	row-gap: 30px;
-}
-@media screen and (max-width: 767px) {
-	.popup__form {
-		row-gap: 30px;
-	}
 }

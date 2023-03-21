@@ -21,14 +21,3 @@
 	transition-duration: 0.5s;
 	cursor: pointer;
 }
-
-.popup__btn-form_type_inactive {
-	color: #000000;
-	border: 1px solid #000000;
-	opacity: 0.2;
-	background: none;
-}
-.popup__btn-form_type_inactive:hover {
-	cursor: none;
-	opacity: 0.2;
-}

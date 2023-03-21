@@ -1,7 +1,6 @@
 .popup__input-box {
 	display: flex;
 	flex-direction: column;
-	row-gap: 30px;
 	font-weight: 400;
 	font-size: 14px;
 	line-height: 17px;

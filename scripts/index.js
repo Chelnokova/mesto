@@ -173,3 +173,18 @@ Array.from(document.querySelectorAll('.elements__img')).forEach(function (el) {
 		popupTitle.textContent = cardTitle;
 	});
 });
+
+popup.forEach((popupEl) => {
+	popupEl.addEventListener('click', (evt) => {
+		if (evt.target === popupEl) {
+			popupEl.classList.remove('popup_opened');
+		}
+	})
+})
+
+document.addEventListener('keydown', (evt) => {
+		if (evt.key === 'Escape') {
+			const openPopup = document.querySelector('.popup_opened');
+			openPopup.classList.remove('popup_opened');
+		}
+	})

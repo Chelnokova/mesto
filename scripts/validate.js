@@ -32,8 +32,10 @@ const hasInvalidInput = (inputList) => {
 const toggleButton = (inputList, buttonElement) => {
 	if (hasInvalidInput(inputList)) {
 		buttonElement.classList.add('popup__btn-form_inactive');
+		buttonElement.setAttribute('disabled', 'true');
 	} else {
 		buttonElement.classList.remove('popup__btn-form_inactive');
+		buttonElement.removeAttribute('disabled');
 	}
 }
 
@@ -41,11 +43,15 @@ const setEventListener = (formElement) => {
 	const inputList = Array.from(formElement.querySelectorAll('.popup__input'));
 	const buttonElement = formElement.querySelector('.popup__btn-form');
 
+	toggleButton(inputList, buttonElement);
+
 	inputList.forEach((inputElement) => {
 		inputElement.addEventListener('input', () => {
 			isValid(formElement, inputElement);
+			
 			toggleButton(inputList, buttonElement);
 		});
+		toggleButton(inputList, buttonElement);
 	});
 }
 

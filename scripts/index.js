@@ -114,6 +114,8 @@ function closePopup(el) {
 	const openPopup = el.closest('.popup');
 	el.addEventListener('click', () => {
 		openPopup.classList.remove('popup_opened');
+		titleInput.value = '';
+		linkInput.value = '';
 	});
 }
 

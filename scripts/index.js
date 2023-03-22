@@ -31,6 +31,10 @@ const imageCard = document.querySelector('.elements__img');
 const titleCard = document.querySelector('.elements__title');
 const cardTemplate = document.querySelector('#template__card').content;
 
+// Переменные для работы функции toggleButton
+const inputList = Array.from(document.querySelectorAll('.popup__input'));
+const buttonElement = formElementCard.querySelector('.popup__btn-form');
+
 // данные для карточек
 const initialCards = [
 	{
@@ -63,6 +67,7 @@ const initialCards = [
 function openPopup(elem) {
 	elem.classList.add('popup_opened');
 	elem.classList.add('popup_animeted');
+	toggleButton(inputList, buttonElement, validationClasses);
 }
 
 // слушатель клика по кнопке editBtn и запуска открытия нужного попапа с автоматическим заполнением полей

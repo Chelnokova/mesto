@@ -70,6 +70,11 @@ function openPopup(elem) {
 	toggleButton(inputList, buttonElement, validationClasses);
 }
 
+// Функция закрытия попапа
+function close(elem) {
+	elem.classList.remove('popup_opened');
+}
+
 // слушатель клика по кнопке editBtn и запуска открытия нужного попапа с автоматическим заполнением полей
 editBtn.addEventListener('click', function() {
 	openPopup(popupEdit);
@@ -106,11 +111,6 @@ function fillCard(element) {
 	cardContainer.prepend(cardElement);
 }
 
-// функция закрытия попапа при клике на кнопку внутри формы "Сохранить" или "Создать"
-function closePopupFormBtn(el) {
-	el.classList.remove('popup_opened');
-}
-
 // // перебор кнопок закрытия попапа и запуск соответствующей функции 
 closeBtn.forEach(closePopup);
 
@@ -134,7 +134,7 @@ function handleFormSubmit (evt) {
 	nameProfile.textContent = nameInput.value;
 	jobProfile.textContent = jobInput.value;
 
-	closePopupFormBtn(popupEdit);
+	close(popupEdit);
 }
 
 // слушатель события submit на formElementCard
@@ -153,7 +153,7 @@ function createCard(evt) {
 	titleInput.value = '';
 	linkInput.value = '';
 	fillCard(initialCards[0]);
-	closePopupFormBtn(popupAdd);
+	close(popupAdd);
 }
 
 // функция удаления карточки
@@ -182,14 +182,17 @@ Array.from(document.querySelectorAll('.elements__img')).forEach(function (el) {
 popup.forEach((popupEl) => {
 	popupEl.addEventListener('click', (evt) => {
 		if (evt.target === popupEl) {
-			popupEl.classList.remove('popup_opened');
+			close(popupEl);
 		}
 	})
 })
 
 document.addEventListener('keydown', (evt) => {
 		if (evt.key === 'Escape') {
-			const openPopup = document.querySelector('.popup_opened');
-			openPopup.classList.remove('popup_opened');
+			popup.forEach((popupEl) => {
+				if (popupEl.classList.contains('popup_opened')) {
+					close(popupEl);
+				} 
+			})
 		}
 	})

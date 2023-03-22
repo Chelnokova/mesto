@@ -5,7 +5,7 @@ const nameProfile = document.querySelector('.profile__name');
 const jobProfile = document.querySelector('.profile__job');
 
 // Переменные блока popup
-const popup = document.querySelectorAll('.popup');
+const popups = document.querySelectorAll('.popup');
 const popupEdit = document.querySelector('.popup_type_edit');
 const popupAdd = document.querySelector('.popup_type_add');
 const popupView = document.querySelector('.popup_type_view');
@@ -13,9 +13,7 @@ const popupImage = document.querySelector('.popup__image');
 const popupTitle = document.querySelector('.popup__heading');
 
 // Переменные кнопок блока popup
-const closeBtn = document.querySelectorAll('.popup__btn-close');
-const saveBtn = document.querySelector('.popup__btn-form_type_save');
-const createBtn = document.querySelector('.popup__btn-form_type_create');
+const closeBtns = document.querySelectorAll('.popup__btn-close');
 
 // Переменные формы блока popup
 const formElementProfile = document.querySelector('.popup__form_type_profile');
@@ -66,7 +64,6 @@ const initialCards = [
 // функция открытия попапа
 function openPopup(elem) {
 	elem.classList.add('popup_opened');
-	elem.classList.add('popup_animeted');
 	toggleButton(inputList, buttonElement, validationClasses);
 }
 
@@ -88,16 +85,19 @@ addBtn.addEventListener('click', function() {
 });
 
 // перебор массива initialCards и запуска функции fillCard
-initialCards.forEach(fillCard);
-
+initialCards.forEach(function(el) {
+	cardContainer.prepend(fillCard(el));
+} );
 // функция добавления карточек на страницу с работой кнопок лайк и удалить
 function fillCard(element) {
 	
 	const cardElement = cardTemplate.cloneNode(true);
+
+	const cardElementImg = cardElement.querySelector('.elements__img');
 	
-	cardElement.querySelector('.elements__img').src = element.link;
+	cardElementImg.src = element.link;
 	
-	cardElement.querySelector('.elements__img').alt = `На фото ${element.name}`;
+	cardElementImg.alt = `На фото ${element.name}`;
 	
 	cardElement.querySelector('.elements__title').textContent = element.name;
 
@@ -107,20 +107,34 @@ function fillCard(element) {
 
 	const deleteBtn = cardElement.querySelector('.elements__basket');
 	deleteBtn.addEventListener('click', clickDeleteBtn);
-	
-	cardContainer.prepend(cardElement);
+
+	cardElementImg.addEventListener('click', openImgPopup);
+
+	return cardElement;
+}
+
+// Функция открытия попапа с нужной картинкой и заголовком
+function openImgPopup(evt) {
+	openPopup(popupView);
+
+	const openCard = evt.target.closest('.elements__card');
+	const cardImg = evt.target.getAttribute('src');
+	const cardAltImg = evt.target.getAttribute('alt');
+	const cardTitle = openCard.querySelector('.elements__title').textContent;
+
+	popupImage.src = cardImg;
+	popupImage.alt = `На фото ${cardAltImg}`;
+	popupTitle.textContent = cardTitle;
 }
 
 // // перебор кнопок закрытия попапа и запуск соответствующей функции 
-closeBtn.forEach(closePopup);
+closeBtns.forEach(closePopup);
 
 // // функция закрытия попапа при клике на крестик
 function closePopup(el) {
 	const openPopup = el.closest('.popup');
 	el.addEventListener('click', () => {
-		openPopup.classList.remove('popup_opened');
-		titleInput.value = '';
-		linkInput.value = '';
+		close(openPopup);
 	});
 }
 
@@ -150,9 +164,10 @@ function createCard(evt) {
 	};
 	initialCards.splice(0, 0, newCard);
 
-	titleInput.value = '';
-	linkInput.value = '';
-	fillCard(initialCards[0]);
+	formElementCard.reset();
+
+	cardContainer.prepend(fillCard(initialCards[0]))
+
 	close(popupAdd);
 }
 
@@ -163,23 +178,7 @@ function clickDeleteBtn(evt) {
 	card.remove();
 }
 
-// Открытие попапа с нужной картинкой и заголовком при клике на картинку в карточке
-Array.from(document.querySelectorAll('.elements__img')).forEach(function (el) {
-	el.addEventListener('click', function(evt) {
-		openPopup(popupView);
-
-		const openCard = evt.target.closest('.elements__card');
-		const cardImg = evt.target.getAttribute('src');
-		const cardAltImg = evt.target.getAttribute('alt');
-		const cardTitle = openCard.querySelector('.elements__title').textContent;
-
-		popupImage.src = cardImg;
-		popupImage.alt = `На фото ${cardAltImg}`;
-		popupTitle.textContent = cardTitle;
-	});
-});
-
-popup.forEach((popupEl) => {
+popups.forEach((popupEl) => {
 	popupEl.addEventListener('click', (evt) => {
 		if (evt.target === popupEl) {
 			close(popupEl);

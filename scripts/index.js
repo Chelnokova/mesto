@@ -67,27 +67,50 @@ function openPopup(elem) {
 	toggleButton(inputList, buttonElement, validationClasses);
 }
 
+// Функция открытия попапа с нужной картинкой и заголовком
+function openImgPopup(evt) {
+	openPopup(popupView);
+
+	const openCard = evt.target.closest('.elements__card');
+	const cardImg = evt.target.getAttribute('src');
+	const cardAltImg = evt.target.getAttribute('alt');
+	const cardTitle = openCard.querySelector('.elements__title').textContent;
+
+	popupImage.src = cardImg;
+	popupImage.alt = `На фото ${cardAltImg}`;
+	popupTitle.textContent = cardTitle;
+}
+
 // Функция закрытия попапа
-function close(elem) {
+function closePopup(elem) {
 	elem.classList.remove('popup_opened');
 }
 
-// слушатель клика по кнопке editBtn и запуска открытия нужного попапа с автоматическим заполнением полей
-editBtn.addEventListener('click', function() {
-	openPopup(popupEdit);
-	nameInput.value = nameProfile.textContent;
-	jobInput.value = jobProfile.textContent;
-});
+// функция закрытия попапа при клике на крестик
+function closeCross(el) {
+	const openPopup = el.closest('.popup');
+	el.addEventListener('click', () => {
+		closePopup(openPopup);
+	});
+}
 
-// слушатель клика по кнопке addBtn и запуска открытия нужного попапа
-addBtn.addEventListener('click', function() {
-	openPopup(popupAdd);
-});
+// функция удаления карточки
+function clickDeleteBtn(evt) {
+	const button = evt.target;
+	const card = button.closest('.elements__card');
+	card.remove();
+}
 
-// перебор массива initialCards и запуска функции fillCard
-initialCards.forEach(function(el) {
-	cardContainer.prepend(fillCard(el));
-} );
+// функция работы кнопки 'Сохранить'
+function handleFormSubmit (evt) {
+    evt.preventDefault(); 
+
+	nameProfile.textContent = nameInput.value;
+	jobProfile.textContent = jobInput.value;
+
+	closePopup(popupEdit);
+}
+
 // функция добавления карточек на страницу с работой кнопок лайк и удалить
 function fillCard(element) {
 	
@@ -113,48 +136,7 @@ function fillCard(element) {
 	return cardElement;
 }
 
-// Функция открытия попапа с нужной картинкой и заголовком
-function openImgPopup(evt) {
-	openPopup(popupView);
-
-	const openCard = evt.target.closest('.elements__card');
-	const cardImg = evt.target.getAttribute('src');
-	const cardAltImg = evt.target.getAttribute('alt');
-	const cardTitle = openCard.querySelector('.elements__title').textContent;
-
-	popupImage.src = cardImg;
-	popupImage.alt = `На фото ${cardAltImg}`;
-	popupTitle.textContent = cardTitle;
-}
-
-// // перебор кнопок закрытия попапа и запуск соответствующей функции 
-closeBtns.forEach(closePopup);
-
-// // функция закрытия попапа при клике на крестик
-function closePopup(el) {
-	const openPopup = el.closest('.popup');
-	el.addEventListener('click', () => {
-		close(openPopup);
-	});
-}
-
-// слушатель события submit на formElementProfile
-formElementProfile.addEventListener('submit', handleFormSubmit);
-
-// функция работы кнопки 'Сохранить'
-function handleFormSubmit (evt) {
-    evt.preventDefault(); 
-
-	nameProfile.textContent = nameInput.value;
-	jobProfile.textContent = jobInput.value;
-
-	close(popupEdit);
-}
-
-// слушатель события submit на formElementCard
-formElementCard.addEventListener('submit', createCard);
-
-// функция пополнения initialCards новой информацией и создание карточки
+// функция пополнения данных карточек новой информацией и создание карточки
 function createCard(evt) {
 	evt.preventDefault(); 
 
@@ -168,30 +150,55 @@ function createCard(evt) {
 
 	cardContainer.prepend(fillCard(initialCards[0]))
 
-	close(popupAdd);
+	closePopup(popupAdd);
 }
 
-// функция удаления карточки
-function clickDeleteBtn(evt) {
-	const button = evt.target;
-	const card = button.closest('.elements__card');
-	card.remove();
-}
+// слушатель клика по кнопке editBtn и запуска открытия нужного попапа с автоматическим заполнением полей
+editBtn.addEventListener('click', function() {
+	openPopup(popupEdit);
+	nameInput.value = nameProfile.textContent;
+	jobInput.value = jobProfile.textContent;
+});
 
+// слушатель клика по кнопке addBtn и запуска открытия нужного попапа
+addBtn.addEventListener('click', function() {
+	openPopup(popupAdd);
+});
+
+// слушатель события submit на formElementProfile
+formElementProfile.addEventListener('submit', handleFormSubmit);
+
+// слушатель события submit на formElementCard
+formElementCard.addEventListener('submit', createCard);
+
+// закрытие попапа нажатием на кнопку Esc
+document.addEventListener('keydown', (evt) => {
+	if (evt.key === 'Escape') {
+		popups.forEach((popupEl) => {
+			if (popupEl.classList.contains('popup_opened')) {
+				closePopup(popupEl);
+			} 
+		})
+	}
+})
+
+// закрытие попапа кликом на оверлей
 popups.forEach((popupEl) => {
-	popupEl.addEventListener('click', (evt) => {
+	popupEl.addEventListener('mousedown', (evt) => {
 		if (evt.target === popupEl) {
-			close(popupEl);
+			closePopup(popupEl);
 		}
 	})
 })
 
-document.addEventListener('keydown', (evt) => {
-		if (evt.key === 'Escape') {
-			popup.forEach((popupEl) => {
-				if (popupEl.classList.contains('popup_opened')) {
-					close(popupEl);
-				} 
-			})
-		}
-	})
+// перебор массива с данными карточек и запуска функции fillCard
+initialCards.forEach(function(el) {
+	cardContainer.prepend(fillCard(el));
+} );
+
+// перебор кнопок закрытия попапа и запуск соответствующей функции 
+closeBtns.forEach(closeCross);
+
+
+
+

@@ -109,7 +109,7 @@ function fillCard(element) {
 }
 
 // Функция создания карточки
-function newCard (dataCard) {
+function addNewCard (dataCard) {
 	cardContainer.prepend(fillCard(dataCard));
 }
 

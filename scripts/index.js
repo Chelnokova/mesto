@@ -33,6 +33,9 @@ const cardTemplate = document.querySelector('#template__card').content;
 const inputList = Array.from(document.querySelectorAll('.popup__input'));
 const buttonElement = formElementCard.querySelector('.popup__btn-form');
 
+// import Card from './Card.js';
+import {FormValidator} from './FormValidator.js';
+
 // функция открытия попапа
 function openPopup(elem) {
 	elem.classList.add('popup_opened');
@@ -59,13 +62,6 @@ function closePopupByEsc(evt) {
 		const openPopup = document.querySelector('.popup_opened');
 		closePopup(openPopup);
 	} 
-}
-
-// функция удаления карточки
-function clickDeleteBtn(evt) {
-	const button = evt.target;
-	const card = button.closest('.elements__card');
-	card.remove();
 }
 
 // функция работы кнопки 'Сохранить'
@@ -95,8 +91,8 @@ function fillCard(element) {
 		evt.target.classList.toggle('elements__like_checked');
 	});
 
-	const deleteBtn = cardElement.querySelector('.elements__basket');
-	deleteBtn.addEventListener('click', clickDeleteBtn);
+	// const deleteBtn = cardElement.querySelector('.elements__basket');
+	// deleteBtn.addEventListener('click', clickDeleteBtn);
 
 	cardElementImg.addEventListener('click', () => {
 		openPopup(popupView);
@@ -117,14 +113,14 @@ function addNewCard (dataCard) {
 function createCard(evt) {
 	evt.preventDefault(); 
 
-	newCard ({
+	addNewCard ({
 		name: titleInput.value,
 		link: linkInput.value
 	});
 
 	formElementCard.reset();
 
-	toggleButton(inputList, buttonElement, validationClasses);
+	// toggleButton(inputList, buttonElement, validationClasses);
 
 	closePopup(popupAdd);
 }
@@ -157,6 +153,7 @@ popups.forEach((popupEl) => {
 })
 
 // перебор массива с данными карточек и запуска функции fillCard
+import {initialCards} from './Card.js';
 initialCards.forEach(function(el) {
 	cardContainer.prepend(fillCard(el));
 } );

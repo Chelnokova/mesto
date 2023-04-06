@@ -1,4 +1,4 @@
-const showInputError = (formElement, inputElement, errorMessage, classSet) => {
+export const FormValidator = (function() {const showInputError = (formElement, inputElement, errorMessage, classSet) => {
 	const formError = formElement.querySelector(`.${inputElement.id}-error`);
 
 	inputElement.classList.add(classSet.activeErrorBorder);
@@ -68,3 +68,4 @@ const validationClasses = ({
 });
 
 enableValidation(validationClasses);
+}());

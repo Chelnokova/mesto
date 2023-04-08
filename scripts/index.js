@@ -132,3 +132,11 @@ popups.forEach((popupEl) => {
 
 // перебор кнопок закрытия попапа и запуск соответствующей функции 
 closeBtns.forEach(closeCross);
+
+initialCards.forEach((item) => {
+	const card = new Card(item, '#template__card', openPopupImg);
+	
+	const cardElemenet = card.generateCard();
+
+	document.querySelector('.elements').append(cardElemenet);
+})

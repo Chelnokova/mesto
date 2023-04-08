@@ -1,5 +1,3 @@
-import {openPopupImg} from './index.js'; 
-
 export class Card {
 	constructor(data, templateSelector, handleOpenPopupImg) {
 		this._name = data.name;
@@ -50,11 +48,3 @@ export class Card {
 		})
 	}
 }
-
-	initialCards.forEach((item) => {
-		const card = new Card(item, '#template__card', openPopupImg);
-		
-		const cardElemenet = card.generateCard();
-
-		document.querySelector('.elements').append(cardElemenet);
-	})

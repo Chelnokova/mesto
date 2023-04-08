@@ -1,5 +1,6 @@
- import {openPopupImg} from './index.js'; 
-  export class Card {
+import {openPopupImg} from './index.js'; 
+
+export class Card {
 	constructor(data, templateSelector, handleOpenPopupImg) {
 		this._name = data.name;
 		this._link = data.link;
@@ -48,12 +49,12 @@
 			this._handleOpenPopupImg(this._name, this._link);
 		})
 	}
-  }
+}
 
-  initialCards.forEach((item) => {
-	const card = new Card(item, '#template__card', openPopupImg);
-	
-	const cardElemenet = card.generateCard();
+	initialCards.forEach((item) => {
+		const card = new Card(item, '#template__card', openPopupImg);
+		
+		const cardElemenet = card.generateCard();
 
-	document.querySelector('.elements').append(cardElemenet);
-    })
+		document.querySelector('.elements').append(cardElemenet);
+	})

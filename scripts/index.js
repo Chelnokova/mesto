@@ -1,3 +1,6 @@
+import {Card} from './Card.js';
+import {FormValidator, validationClasses} from './FormValidator.js';
+
 // Переменные блока profile
 const editBtn = document.querySelector('.profile__btn-edit');
 const addBtn = document.querySelector('.profile__btn-add');
@@ -25,13 +28,6 @@ const linkInput = document.querySelector('.popup__input_type_link');
 
 // Переменные блока elements
 const cardContainer = document.querySelector('.elements');
-
-// Переменные для работы функции toggleButton
-const inputList = Array.from(document.querySelectorAll('.popup__input'));
-const buttonElement = formElementCard.querySelector('.popup__btn-form');
-
-import {Card} from './Card.js';
-import {FormValidator} from './FormValidator.js';
 
 // функция открытия попапа
 function openPopup(elem) {
@@ -98,8 +94,6 @@ function createCard(evt) {
 
 	formElementCard.reset();
 
-	// toggleButton(inputList, buttonElement, validationClasses);
-
 	closePopup(popupAdd);
 }
 
@@ -108,11 +102,17 @@ editBtn.addEventListener('click', function() {
 	openPopup(popupEdit);
 	nameInput.value = nameProfile.textContent;
 	jobInput.value = jobProfile.textContent;
+
+	const formValidator = new FormValidator(validationClasses, formElementProfile);
+	formValidator.enableValidation();
 });
 
 // слушатель клика по кнопке addBtn и запуска открытия нужного попапа
 addBtn.addEventListener('click', function() {
 	openPopup(popupAdd);
+
+	const formValidator = new FormValidator(validationClasses, formElementCard);
+	formValidator.enableValidation();
 });
 
 // слушатель события submit на formElementProfile
@@ -129,12 +129,6 @@ popups.forEach((popupEl) => {
 		}
 	})
 })
-
-// перебор массива с данными карточек и запуска функции fillCard
-// import {initialCards} from './Card.js';
-// initialCards.forEach(function(el) {
-// 	cardContainer.prepend(fillCard(el));
-// } );
 
 // перебор кнопок закрытия попапа и запуск соответствующей функции 
 closeBtns.forEach(closeCross);

@@ -25,15 +25,12 @@ const linkInput = document.querySelector('.popup__input_type_link');
 
 // Переменные блока elements
 const cardContainer = document.querySelector('.elements');
-const imagesCard = Array.from(document.querySelectorAll('.elements__img'));
-const titleCard = document.querySelector('.elements__title');
-const cardTemplate = document.querySelector('#template__card').content;
 
 // Переменные для работы функции toggleButton
 const inputList = Array.from(document.querySelectorAll('.popup__input'));
 const buttonElement = formElementCard.querySelector('.popup__btn-form');
 
-// import Card from './Card.js';
+import {Card} from './Card.js';
 import {FormValidator} from './FormValidator.js';
 
 // функция открытия попапа
@@ -74,39 +71,20 @@ function handleFormSubmitTypeProfile (evt) {
 	closePopup(popupEdit);
 }
 
-// функция добавления карточек на страницу с работой кнопок лайк и удалить
-function fillCard(element) {
-	
-	const cardElement = cardTemplate.querySelector('.elements__card').cloneNode(true);
-
-	const cardElementImg = cardElement.querySelector('.elements__img');
-	
-	cardElementImg.src = element.link;
-	
-	cardElementImg.alt = `На фото ${element.name}`;
-	
-	cardElement.querySelector('.elements__title').textContent = element.name;
-
-	cardElement.querySelector('.elements__like').addEventListener('click', function(evt) {
-		evt.target.classList.toggle('elements__like_checked');
-	});
-
-	// const deleteBtn = cardElement.querySelector('.elements__basket');
-	// deleteBtn.addEventListener('click', clickDeleteBtn);
-
-	cardElementImg.addEventListener('click', () => {
-		openPopup(popupView);
-		popupImage.src = element.link;
-		popupImage.alt = element.name;
-		popupTitle.textContent = `На фото ${element.name}`;
-	});
-
-	return cardElement;
+ export function openPopupImg(name, link) {
+	openPopup(popupView);
+	popupImage.src = link;
+	popupImage.alt = name;
+	popupTitle.textContent = `На фото ${name}`;
 }
 
 // Функция создания карточки
 function addNewCard (dataCard) {
-	cardContainer.prepend(fillCard(dataCard));
+	const newCard = new Card(dataCard, '#template__card', openPopupImg);
+
+	const newCardElement = newCard.generateCard();
+
+	cardContainer.prepend(newCardElement);
 }
 
 // функция работы кнопки "Создать"
@@ -153,10 +131,10 @@ popups.forEach((popupEl) => {
 })
 
 // перебор массива с данными карточек и запуска функции fillCard
-import {initialCards} from './Card.js';
-initialCards.forEach(function(el) {
-	cardContainer.prepend(fillCard(el));
-} );
+// import {initialCards} from './Card.js';
+// initialCards.forEach(function(el) {
+// 	cardContainer.prepend(fillCard(el));
+// } );
 
 // перебор кнопок закрытия попапа и запуск соответствующей функции 
 closeBtns.forEach(closeCross);

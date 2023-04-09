@@ -1,3 +1,4 @@
+import {initialCards} from './initialCards.js';
 import {Card} from './Card.js';
 import {FormValidator, validationClasses} from './FormValidator.js';
 
@@ -149,9 +150,5 @@ popups.forEach((popupEl) => {
 closeBtns.forEach(closeCross);
 
 initialCards.forEach((item) => {
-	const card = new Card(item, '#template__card', openPopupImg);
-	
-	const cardElemenet = card.generateCard();
-
-	document.querySelector('.elements').append(cardElemenet);
+	addNewCard(item);
 })

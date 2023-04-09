@@ -29,6 +29,14 @@ const linkInput = document.querySelector('.popup__input_type_link');
 // Переменные блока elements
 const cardContainer = document.querySelector('.elements');
 
+
+const formProfileValidator = new FormValidator(validationClasses, formElementProfile);
+formProfileValidator.enableValidation();
+
+
+const formCardValidator = new FormValidator(validationClasses, formElementCard);
+formCardValidator.enableValidation();
+
 // функция открытия попапа
 function openPopup(elem) {
 	elem.classList.add('popup_opened');
@@ -39,6 +47,9 @@ function openPopup(elem) {
 function closePopup(elem) {
 	elem.classList.remove('popup_opened');
 	document.removeEventListener('keydown', closePopupByEsc);
+	resetTextInput(elem);
+	formProfileValidator.cleanupValidation();
+	formCardValidator.cleanupValidation();
 }
 
 // функция закрытия попапа при клике на крестик
@@ -55,6 +66,13 @@ function closePopupByEsc(evt) {
 		const openPopup = document.querySelector('.popup_opened');
 		closePopup(openPopup);
 	} 
+}
+
+// Функция предназначена для сброса написанных данных в форме создания карточки при обычном закрытии попапа без сохранения
+function resetTextInput(elem) {
+	if(elem.classList.contains('popup_type_add')) {
+		formElementCard.reset();
+	}
 }
 
 // функция работы кнопки 'Сохранить'
@@ -100,19 +118,16 @@ function createCard(evt) {
 // слушатель клика по кнопке editBtn и запуска открытия нужного попапа с автоматическим заполнением полей
 editBtn.addEventListener('click', function() {
 	openPopup(popupEdit);
+	
 	nameInput.value = nameProfile.textContent;
 	jobInput.value = jobProfile.textContent;
-
-	const formValidator = new FormValidator(validationClasses, formElementProfile);
-	formValidator.enableValidation();
+	formProfileValidator.cleanupValidation();
 });
 
 // слушатель клика по кнопке addBtn и запуска открытия нужного попапа
 addBtn.addEventListener('click', function() {
 	openPopup(popupAdd);
-
-	const formValidator = new FormValidator(validationClasses, formElementCard);
-	formValidator.enableValidation();
+	formCardValidator.cleanupValidation();
 });
 
 // слушатель события submit на formElementProfile

@@ -38,6 +38,17 @@ formProfileValidator.enableValidation();
 const formCardValidator = new FormValidator(validationClasses, formElementCard);
 formCardValidator.enableValidation();
 
+// Функция предназначена для сброса написанных данных и текста ошибки в формах создания карточки и редактирования данных профиля при обычном закрытии попапа без сохранения
+function resetFormInput(elem) {
+	if(elem.classList.contains('popup_type_add')) {
+		formCardValidator.cleanupValidation();
+		formElementCard.reset();
+	}
+	if(elem.classList.contains('popup__type_edit')) {
+		formProfileValidator.cleanupValidation();
+	}
+}
+
 // функция открытия попапа
 function openPopup(elem) {
 	elem.classList.add('popup_opened');
@@ -48,15 +59,13 @@ function openPopup(elem) {
 function closePopup(elem) {
 	elem.classList.remove('popup_opened');
 	document.removeEventListener('keydown', closePopupByEsc);
-	resetTextInput(elem);
-	formProfileValidator.cleanupValidation();
-	formCardValidator.cleanupValidation();
 }
 
 // функция закрытия попапа при клике на крестик
 function closeCross(el) {
 	const openPopup = el.closest('.popup');
 	el.addEventListener('click', () => {
+		resetFormInput(openPopup);
 		closePopup(openPopup);
 	});
 }
@@ -67,13 +76,6 @@ function closePopupByEsc(evt) {
 		const openPopup = document.querySelector('.popup_opened');
 		closePopup(openPopup);
 	} 
-}
-
-// Функция предназначена для сброса написанных данных в форме создания карточки при обычном закрытии попапа без сохранения
-function resetTextInput(elem) {
-	if(elem.classList.contains('popup_type_add')) {
-		formElementCard.reset();
-	}
 }
 
 // функция работы кнопки 'Сохранить'

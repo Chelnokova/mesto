@@ -74,6 +74,7 @@ function closeCross(el) {
 function closePopupByEsc(evt) {
 	if (evt.key === 'Escape') {
 		const openPopup = document.querySelector('.popup_opened');
+		resetFormInput(openPopup);
 		closePopup(openPopup);
 	} 
 }

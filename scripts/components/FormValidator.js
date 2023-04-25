@@ -1,12 +1,3 @@
-export const validationClasses = ({
-	activeErrorBorder: 'popup__input_type_error',
-	activeErrorText: 'popup__text-error_active',
-	inactiveClassButton: 'popup__btn-form_inactive',
-	inputSelector: '.popup__input',
-	buttonSelector: '.popup__btn-form',
-	formSelector: '.popup__form',
-});
-
 export class FormValidator {
 	constructor(classSelectors, form) {
 		this._activeErrorBorder = classSelectors.activeErrorBorder;

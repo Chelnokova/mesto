@@ -23,4 +23,4 @@ export const classes = ({
 	profilePopupSelector: '.popup_type_edit',
 	newCardPopupSelector: '.popup_type_add',
 	viewPopupSelector: '.popup_type_view',
-})
+});

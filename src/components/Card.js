@@ -19,17 +19,21 @@ export class Card {
 
 	generateCard() {
 		this._element = this._getTemplate();
+		this._cardImage = this._element.querySelector('.elements__img');
+		this._likeButton = this._element.querySelector('.elements__like');
+		this._elementTitle = this._element.querySelector('.elements__title');
+		this._basketButton = this._element.querySelector('.elements__basket');
 		this._setEventListeners();
 		
-		this._element.querySelector('.elements__img').src = this._link;
-		this._element.querySelector('.elements__title').textContent = this._name;
-		this._element.querySelector('.elements__img').alt = `На фото ${this._name}`;
+		this._cardImage.src = this._link;
+		this._elementTitle.textContent = this._name;
+		this._cardImage.alt = `На фото ${this._name}`;
 
 		return this._element;
 	}
 
 	_handleLikeButton() {
-		this._element.querySelector('.elements__like').classList.toggle('elements__like_checked');
+		this._likeButton.classList.toggle('elements__like_checked');
 	}
 
 	_handleDeleteButton() {
@@ -38,13 +42,13 @@ export class Card {
 	}
 
 	_setEventListeners() {
-		this._element.querySelector('.elements__like').addEventListener('click', () => {
+		this._likeButton.addEventListener('click', () => {
 			this._handleLikeButton();
 		});
-		this._element.querySelector('.elements__basket').addEventListener('click', () => {
+		this._basketButton.addEventListener('click', () => {
 			this._handleDeleteButton();
 		});
-		this._element.querySelector('.elements__img').addEventListener('click', () => {
+		this._cardImage.addEventListener('click', () => {
 			this._handleOpenPopupImg({
 				name: this._name, 
 				link: this._link});

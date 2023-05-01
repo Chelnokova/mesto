@@ -23,7 +23,6 @@ export class Popup {
 				this.close();
 			}
 		});
-		this._itemPopup.addEventListener('keydown', this._handleEscClose);
 		this._closeButton.addEventListener('click', () => {
 			this.close()
 		})

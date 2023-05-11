@@ -1,6 +1,7 @@
 // Переменные блока profile
 export const editBtn = document.querySelector('.profile__btn-edit');
 export const addBtn = document.querySelector('.profile__btn-add');
+export const avatarBtn = document.querySelector('.profile__avatar');
 
 // Переменные формы блока popup
 export const formElementProfile = document.querySelector('.popup__form_type_profile');
@@ -23,4 +24,6 @@ export const classes = ({
 	profilePopupSelector: '.popup_type_edit',
 	newCardPopupSelector: '.popup_type_add',
 	viewPopupSelector: '.popup_type_view',
+	deletePopupSelector: '.popup_type_delete',
+	avatarPopupSelector: '.popup_type_avatar',
 });

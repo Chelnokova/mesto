@@ -5,6 +5,7 @@
 @import url(../blocks/elements/__amount-like/element__amount-like.css);
 @import url(../blocks/elements/__card/elements__card.css);
 @import url(../blocks/elements/__basket/elements__basket.css);
+@import url(../blocks/elements/__basket/_disabled/elements__basket_disabled.css);
 @import url(../blocks/elements/__descr/elements__descr.css);
 @import url(../blocks/elements/__img/elements__img.css);
 @import url(../blocks/elements/__like-block/elements__like-block.css);

@@ -1,4 +1,4 @@
-// Переменные блока profile
+// Кнопки
 export const editBtn = document.querySelector('.profile__btn-edit');
 export const addBtn = document.querySelector('.profile__btn-add');
 export const avatarBtn = document.querySelector('.profile__avatar');
@@ -6,6 +6,7 @@ export const avatarBtn = document.querySelector('.profile__avatar');
 // Переменные формы блока popup
 export const formElementProfile = document.querySelector('.popup__form_type_profile');
 export const formElementCard = document.querySelector('.popup__form_type_card');
+export const formElementAvatar = document.querySelector('.popup__form_type_avatar');
 export const nameInput = document.querySelector('.popup__input_type_name');
 export const jobInput = document.querySelector('.popup__input_type_job');
 

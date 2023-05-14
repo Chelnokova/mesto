@@ -20,20 +20,16 @@ const api = new Api({
 	}
   }); 
 
-api.getInitialCards()
-.then((cards) => {
-	cardContainer.renderItems(cards);
-}).catch((err) => {
-	  console.log(err);
-	});
-
-api.getUserInfo().then((userData) => {
+Promise.all([api.getUserInfo(), api.getInitialCards()])
+.then(([userData, cards]) => {
 	userInfo.setUserInfo(userData);
 	userInfo.setUserAvatar(userData.avatar);
 	userId = userData._id;
+
+	cardContainer.renderItems(cards);
 }).catch((err) => {
 	console.log(err);
-  });
+})
 
 function openPopupImg(data) {
 	popupView.open(data.name, data.link);
@@ -99,6 +95,7 @@ const popupAvatar = new PopupWithForm(classes.avatarPopupSelector, {
 		api.sendNewAvatar(data.link)
 		.then((data) => {
 			userInfo.setUserAvatar(data.avatar);
+			popupAvatar.close();
 		}).catch((err) => {
 			console.log(err);
 		}).finally(() => {
@@ -113,6 +110,7 @@ const popupProfile = new PopupWithForm(classes.profilePopupSelector, {
 		api.sendUserData(data)
 		.then((data) => {
 			userInfo.setUserInfo(data);
+			popupProfile.close();
 		}).catch((err) => {
 			console.log(err);
 		}).finally(() => {
@@ -127,6 +125,7 @@ const popupNewCard = new PopupWithForm(classes.newCardPopupSelector, {
 		api.sendNewCard(item)
 		.then((item) => {
 			cardContainer.addItem(addNewCard(item));
+			popupNewCard.close();
 		}).catch((err) => {
 			console.log(err);
 		}).finally(() => {

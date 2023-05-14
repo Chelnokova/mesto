@@ -14,4 +14,4 @@
 
 **Сыслка**
 
-* Ознакомиться с результатом проекта можно по [ссылке на GitHub Pages](https://chelnokova.github.io/mesto/index.html)
+* Ознакомиться с результатом проекта можно по [ссылке на GitHub Pages](https://chelnokova.github.io/mesto/)

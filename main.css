@@ -397,6 +397,12 @@ template {
 		grid-template-columns: 282px;
 	}
 }
+.element__amount-like {
+	font-weight: 400;
+	font-size: 13px;
+	line-height: 16px;
+	margin: 0;
+}
 .elements__card {
 	position: relative;
 	display: flex;
@@ -421,10 +427,13 @@ template {
 	transition-duration: 0.5s;
 	cursor: pointer;
 }
+.elements__basket_disabled {
+	display: none;
+}
 .elements__descr {
 	display: flex;
 	justify-content: space-between;
-	align-items: baseline;
+	align-items: center;
 	padding: 25px 20px;
 }
 .elements__img {
@@ -440,6 +449,12 @@ template {
 
 .elements__img:hover {
 	cursor: pointer;
+}
+.elements__like-block {
+	display: flex;
+	flex-direction: column;
+	row-gap: 5px;
+	align-items: center;
 }
 .elements__like {
 	border: none;
@@ -633,7 +648,6 @@ template {
 	background: #FFFFFF;
 	color: #000000;
 	width: 430px;
-	height: 330px;
 	box-sizing: border-box;
 	box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
 	border-radius: 10px;
@@ -733,15 +747,23 @@ template {
 	}
 }
 .profile__avatar {
-	border-radius: 50%;
 	width: 120px;
 	height: 120px;
+	border-radius: 50%;
+	object-fit: cover;
+}
+
+.profile__avatar:hover {
+	cursor: pointer;
+	opacity: 0.2;
+	
 }
 @media screen and (max-width: 767px) {
 	.profile__avatar {
 		margin: 0 0 26px;
 	}
 }
+
 .profile__btn-add {
 	outline: none;
 	background: url(0b7617b5475b802eb98b.svg) center no-repeat;
@@ -763,6 +785,14 @@ template {
 	opacity: 0.6;
 	transition-duration: 0.5s;
 	cursor: pointer;
+}
+.profile__btn-avatar {
+	background: rgba(0, 0, 0, 0.8) url(a086f758840ae814ecde.svg) center no-repeat;
+	border: none;
+	padding: 0;
+	width: 120px;
+	height: 120px;
+	border-radius: 50%;
 }
 .profile__btn-edit {
 	outline: none;

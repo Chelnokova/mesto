@@ -21,7 +21,7 @@ export class FormValidator {
 
 	_hideInputError(inputElement) {
 		const formError = this._form.querySelector(`.${inputElement.id}-error`);
-
+		
 		inputElement.classList.remove(this._activeErrorBorder);
 		formError.classList.remove(this._activeErrorText);
 		formError.textContent = '';
